@@ -36,8 +36,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        getExifInfo();
-
+        getExifInfo();//jpgファイル、exif情報取得のメソッド
 
     }
 
@@ -99,8 +98,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
                         //緯度経度確認用
                         Log.d(TAG, "Exif_info ①: " + latlng[0] + "," + latlng[1]);
-                        Log.d(TAG, "Exif_info ②: " + latlng[0]);
-                        Log.d(TAG, "Exif_info ③: " + latlng[1]);
+//                        Log.d(TAG, "Exif_info ②: " + latlng[0]);
+//                        Log.d(TAG, "Exif_info ③: " + latlng[1]);
 
                       /*
                       ③Geocoderのプログラミング
@@ -124,29 +123,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                             //Geocoder確認用。住所が確認できる
                             Log.d(TAG, "geocoder: " + builder.toString());
 
-
-                          /*　＊＊＊＊ここを別クラスにする＊＊＊＊
-                          ④部分一致検索プログラミング（都道府県を選別する）
-                          */
-                            //String tokyo = "東京都";
-                            //String saitama = "埼玉県";
-                            final String TOKYO = "Tokyo";
-                            final String SAITAMA = "Saitama Prefecture";
                             String ken = builder.toString();
 
-                            //tokyo.indexOf(ken)では動作しないので注意
-                            if(ken.indexOf(TOKYO) != -1){
-
-                                Log.d(TAG, "住所（東京）：　" + builder.toString());
-
-                            } else  if(ken.indexOf(SAITAMA) != -1){
-
-                                Log.d(TAG, "住所（埼玉）：　" + builder.toString());
-
-                            } else {
-
-                                Log.d(TAG, "住所（？？？）：　" + builder.toString());
-                            }
+                            //SortOutStatesクラスのオブジェクトを作成
+                            SortOutStates sortOutStates = new SortOutStates();
+                            //geocoderで取得した住所を引数にしてsortOutメソッドを呼び出す
+                            sortOutStates.sortOut(ken);
 
 
                         } catch (IOException e){
