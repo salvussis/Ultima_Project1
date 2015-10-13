@@ -1,0 +1,21 @@
+<resources>
+    <!--
+    TODO: Before you run your application, you need a Google Maps API key.
+
+    To get one, follow this link, follow the directions and press "Create" at the end:
+
+    https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=22:6A:5E:68:83:86:5B:C2:3A:9A:41:95:71:7E:89:A1:2D:3C:DD:DD%3Bcom.ultimathule.ultima_project1
+
+    You can also add your credentials to an existing key, using this line:
+    22:6A:5E:68:83:86:5B:C2:3A:9A:41:95:71:7E:89:A1:2D:3C:DD:DD;com.ultimathule.ultima_project1
+
+    Alternatively, follow the directions here:
+    https://developers.google.com/maps/documentation/android/start#get-key
+
+    Once you have your key (it starts with "AIza"), replace the "google_maps_key"
+    string in this file.
+    -->
+    <string name="google_maps_key" translatable="false" templateMergeStrategy="preserve">
+        YOUR_KEY_HERE
+    </string>
+</resources>
