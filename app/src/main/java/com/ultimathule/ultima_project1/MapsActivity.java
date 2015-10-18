@@ -16,6 +16,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.io.File;
@@ -30,7 +31,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private static ExifInterface exif;
     private static Geocoder mGeocoder;
 
-    Button goToSecondActivity;
+    //marker用
+    Marker marker;
+    private LatLng idoKeido;//static?
+    private ArrayList<String> arrayList = new ArrayList<>();//static?
+    static LatLng TOKYO = new LatLng(35.691563, 139.785568);//カメラの位置
+
+
+    Button goToSecondActivity;//Intent用
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,13 +95,18 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     //exif情報を確認。trueなら情報を表示する
                     if (exif.getLatLong(latlng) == true) {
 
-                        //緯度と経度を一緒に表示させる方法（geododerは別々なので使わない）
-                    //    String info = String.format("%f, %f", latlng[0], latlng[1]);
 
                         //緯度経度確認用
                         Log.d(TAG, "Exif_info ①: " + latlng[0] + "," + latlng[1]);
 //                        Log.d(TAG, "Exif_info ②: " + latlng[0]);
 //                        Log.d(TAG, "Exif_info ③: " + latlng[1]);
+
+                        //markersを表示するため
+                        //緯度と経度を一緒に表示させる方法
+                        String infoIchi = String.format("%f, %f", latlng[0], latlng[1]);
+                        //ArrayListに全ての写真の位置情報を入れる
+                        arrayList.add(infoIchi);
+                        Log.d(TAG, "arrayList: " + arrayList);
 
                       /*
                       ③Geocoderのプログラミング
@@ -154,10 +167,30 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        setMarker();
+    }
+
+    public void setMarker() {
+        //③ArrayListに入っている写真のデータ数分、ループさせる
+        for(int i = 0; i < arrayList.size(); i++) {
+            String kakunou = arrayList.get(i);//配列の要素を０から順に一度格納する
+            Log.d(TAG, "Marker arrayList(要素): " + kakunou) ;
+
+             String[] wakeru = kakunou.split(",");//LatLngの引数にするため緯度・経度を分けなければいけない
+            double lat = Double.parseDouble(wakeru[0]);//緯度
+            double lng = Double.parseDouble(wakeru[1]);//経度
+
+            idoKeido = new LatLng(lat, lng);//LatLngクラス
+            marker = mMap.addMarker(new MarkerOptions()
+            .position(idoKeido));
+
+            Log.d(TAG, "Marker arrayList: " + arrayList.toString()) ;
+
+        }
+
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(TOKYO, 10));
+        Log.d(TAG, "7") ;
+
     }
 
 
