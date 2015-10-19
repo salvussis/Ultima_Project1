@@ -62,21 +62,23 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
         number.add(3);
 
         kenmei.add("Tokyo");
-        kenmei.add("Chiba Prefecute");
+        kenmei.add("Saitama Prefecture");
         kenmei.add("Miyagi Prefecture");
 
         for(int i = 0; i < number.size(); i++) {
 
             //ここで、"execSQL" を実行すると初期データ登録ができる。
-            db.execSQL("INSERT INTO "
+            String INSERT_INITIAL_DATA = "INSERT INTO "
                     + TABLE_NAME + " ("
                     + ID + ", "
                     + STATE + ", "
                     + COMPLETE_FLG + ") "
-                    + "VALUES (" + number.get(i) + ", '" + kenmei.get(i) + "', 0);");
+                    + "VALUES (" + number.get(i) + ", '" + kenmei.get(i) + "', 0)";
+            db.execSQL(INSERT_INITIAL_DATA);
             //①はここまで・・・・・・・
 
             Log.d(TAG, "After creating and inserting new table!");
+            Log.d(TAG, "insert SQL文: " + INSERT_INITIAL_DATA.toString());
         }
 
     }
@@ -136,13 +138,14 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
         // 3. if we got results get the first one
         if (cursor.moveToFirst()) {
             do {
+                Log.d(TAG, "回数: ");
                 // 4. build book object
                 SetterGetter setterGetter = new SetterGetter();
                 //setter & getter
                 setterGetter.setId(Integer.parseInt(cursor.getString(0)));
                 setterGetter.setState(cursor.getString(1));
                 setterGetter.setComplete(cursor.getInt(2));
-                Log.d(TAG, "getBook" + setterGetter.toString());
+                Log.d(TAG, "getBook: " + setterGetter.toString());
 
                 //フラグが１の県名の "ID" を取り出す
                 String flg_state = cursor.getString(0);

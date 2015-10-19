@@ -4,6 +4,7 @@ import android.util.Log;
 
 /**
  * Created by nobuyukiizumi on 15/10/19.
+ * フラグ１の県を調べ、boundaryメソッド呼び出すためのクラス
  */
 public class TohDohFuKen {
 
@@ -17,7 +18,7 @@ public class TohDohFuKen {
         switch (num) {
             case 1: Log.d(TAG, "method_test:東京"); break;
 
-            case 2: Log.d(TAG, "method_test:千葉" ); break;
+            case 2: Log.d(TAG, "method_test:埼玉" ); break;
 
             case 3: Log.d(TAG, "method_test:宮城" ); break;
         }

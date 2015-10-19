@@ -50,12 +50,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        //①初期データ読み込み
+        //Ⅰ DBに初期データ登録
         mySQLiteHelper = new MySQLiteHelper(MapsActivity.this);
         mySQLiteHelper.getWritableDatabase();
 
-        //②
+        //Ⅱ Exif情報読み込みメソッド呼び出し
         getExifInfo();//jpgファイル、exif情報取得のメソッド
+
+        //Ⅳ フラグ１の県を取り出すメソッド呼び出し
+        mySQLiteHelper.readFlg();
+
 
         goToSecondActivity = (Button)findViewById(R.id.button);
         goToSecondActivity.setOnClickListener(new View.OnClickListener() {
@@ -65,6 +69,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 startActivity(intent);
             }
         });
+
+
 
     }
 
@@ -136,12 +142,20 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                             //Geocoder確認用。住所が確認できる
                             Log.d(TAG, "geocoder: " + builder.toString());
 
+                            //Ⅲ 写真のあった県のフラグを１にする
+                            //String型に一度、住所を格納
                             String ken = builder.toString();
+                            Log.d(TAG, "ken: " + ken);
+                            //メソッド呼び出し
+                            bubunIchi(ken);
 
-                            //SortOutStatesクラスのオブジェクトを作成
-                            SortOutStates sortOutStates = new SortOutStates();
-                            //geocoderで取得した住所を引数にしてsortOutメソッドを呼び出す
-                            sortOutStates.sortOut(ken);
+
+
+
+//                            //SortOutStatesクラスのオブジェクトを作成
+//                            SortOutStates sortOutStates = new SortOutStates();
+//                            //geocoderで取得した住所を引数にしてsortOutメソッドを呼び出す
+//                            sortOutStates.sortOut(ken);
 
 
                         } catch (IOException e){
@@ -158,7 +172,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         return find_files;
 
     }
-
 
     /**
      * Manipulates the map once available.
@@ -196,6 +209,45 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(TOKYO, 10));
         Log.d(TAG, "7") ;
+
+    }
+
+    /*Ⅲ
+     写真のあった県のフラグを１にするメソッド呼び出し
+     部分一致検索プログラミング（都道府県を選別する）
+     */
+    public void bubunIchi(String ken) {
+        final String TOKYO = "Tokyo";
+        final String SAITAMA = "Saitama Prefecture";
+        final String MIYAGI = "Miyagi Prefecture";
+
+        Log.d(TAG, "ken(bubunIchi): " + ken);
+        String state;
+
+        //1.containsメソッドで部分一致検索
+        if(ken.contains(TOKYO)){
+            //2.一致したら、Tokyoを引数にしてupdateFlgメソッドを呼ぶ
+            state = TOKYO;//選別用の変数
+            mySQLiteHelper.updateFlg(state);
+            Log.d(TAG, "選別用(東京)：　" + state.toString());
+            Log.d(TAG, "選別用(東京)" + ken);
+
+        } else if(ken.contains(SAITAMA)){
+
+            state = SAITAMA;
+            mySQLiteHelper.updateFlg(state);
+            Log.d(TAG, "選別用(埼玉)：　" + state.toString());
+            Log.d(TAG, "選別用(埼玉)" + ken);
+
+        } else if(ken.contains(MIYAGI)){
+
+            state = MIYAGI;
+            mySQLiteHelper.updateFlg(state);
+            Log.d(TAG, "選別用(宮城)：　" + state.toString());
+            Log.d(TAG, "選別用(宮城)" + ken);
+
+        }
+
 
     }
 

@@ -9,7 +9,12 @@ import android.util.Log;
 public class SortOutStates {
     static final String TAG = "AppTest";
     String ken;
+/*
 
+
+今までのところ、使用していないクラス
+
+ */
     public static void sortOut(String ken) {
         //
         final String TOKYO = "Tokyo";
