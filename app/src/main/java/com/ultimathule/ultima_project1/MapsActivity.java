@@ -30,6 +30,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private static GoogleMap mMap;
     private static ExifInterface exif;
     private static Geocoder mGeocoder;
+    private MySQLiteHelper mySQLiteHelper;
 
     //marker用
     Marker marker;
@@ -49,6 +50,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
+        //①初期データ読み込み
+        mySQLiteHelper = new MySQLiteHelper(MapsActivity.this);
+        mySQLiteHelper.getWritableDatabase();
+
+        //②
         getExifInfo();//jpgファイル、exif情報取得のメソッド
 
         goToSecondActivity = (Button)findViewById(R.id.button);
