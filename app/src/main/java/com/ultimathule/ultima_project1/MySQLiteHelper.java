@@ -139,21 +139,25 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             do {
                 Log.d(TAG, "回数: ");
-                // 4. build book object
-                SetterGetter setterGetter = new SetterGetter();
-                //setter & getter
-                setterGetter.setId(Integer.parseInt(cursor.getString(0)));
-                setterGetter.setState(cursor.getString(1));
-                setterGetter.setComplete(cursor.getInt(2));
-                Log.d(TAG, "getBook: " + setterGetter.toString());
+
+                //  SetterGetterクラスは使っていないので下記のコードとともに削除予定
+//                // 4. build book object
+//                SetterGetter setterGetter = new SetterGetter();
+//                //setter & getter
+//                setterGetter.setId(Integer.parseInt(cursor.getString(0)));
+//                setterGetter.setState(cursor.getString(1));
+//                setterGetter.setComplete(cursor.getInt(2));
+//                Log.d(TAG, "getBook: " + setterGetter.toString());
 
                 //フラグが１の県名の "ID" を取り出す
-                String flg_state = cursor.getString(0);
-                Log.d(TAG, "flg_state: " + flg_state);
+                String column_id = cursor.getString(0);
+//                String column_state = cursor.getString(1);
+//                String column_flg = cursor.getString(2);
+                Log.d(TAG, "flg_state: " + column_id);
 
                 //ここで、"flg_state"を引数にしてboundaryのメソッドを呼び出す
                 tohDohFuKen = new TohDohFuKen();
-                tohDohFuKen.switchTest(flg_state);
+                tohDohFuKen.switchTest(column_id);
 
                 //クローズ処理
 
