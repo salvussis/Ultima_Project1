@@ -13,7 +13,6 @@ import java.util.ArrayList;
  */
 public class MySQLiteHelper extends SQLiteOpenHelper {
     static final String TAG = "AppTest";
-//    private static TohDohFuKen tohDohFuKen;
 
     // Database Version
     private static final int DATABASE_VERSION = 1;
@@ -142,15 +141,6 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             do {
                 Log.d(TAG, "回数: ");
-
-                //  SetterGetterクラスは使っていないので下記のコードとともに削除予定
-//                // 4. build book object
-//                SetterGetter setterGetter = new SetterGetter();
-//                //setter & getter
-//                setterGetter.setId(Integer.parseInt(cursor.getString(0)));
-//                setterGetter.setState(cursor.getString(1));
-//                setterGetter.setComplete(cursor.getInt(2));
-//                Log.d(TAG, "getBook: " + setterGetter.toString());
 
                 //フラグが１の県名の "ID" を取り出す
                 String column_id = cursor.getString(0);

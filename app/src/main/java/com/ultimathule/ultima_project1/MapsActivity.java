@@ -150,14 +150,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                             bubunIchi(ken);
 
 
-
-
-//                            //SortOutStatesクラスのオブジェクトを作成
-//                            SortOutStates sortOutStates = new SortOutStates();
-//                            //geocoderで取得した住所を引数にしてsortOutメソッドを呼び出す
-//                            sortOutStates.sortOut(ken);
-
-
                         } catch (IOException e){
                             e.printStackTrace();
                         }
