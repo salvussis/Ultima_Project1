@@ -5,6 +5,8 @@ import android.util.Log;
 /**
  * Created by nobuyukiizumi on 15/10/19.
  * フラグ１の県を調べ、boundaryメソッド呼び出すためのクラス
+ *
+ * 現在、使用していないので最後に削除予定
  */
 public class TohDohFuKen {
 

@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class MySQLiteHelper extends SQLiteOpenHelper {
     static final String TAG = "AppTest";
-    private static TohDohFuKen tohDohFuKen;
+//    private static TohDohFuKen tohDohFuKen;
 
     // Database Version
     private static final int DATABASE_VERSION = 1;
@@ -32,6 +32,9 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     //初期データ登録用のArrayList
     ArrayList<Integer> number = new ArrayList<>();
     ArrayList<String> kenmei = new ArrayList<>();
+
+    //フラグ１の県を抜き出すメソッド用
+    static ArrayList<String> boundaryArray = new ArrayList<>();
 
 
     public MySQLiteHelper(Context context) {
@@ -155,9 +158,9 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 //                String column_flg = cursor.getString(2);
                 Log.d(TAG, "flg_state: " + column_id);
 
-                //ここで、"flg_state"を引数にしてboundaryのメソッドを呼び出す
-                tohDohFuKen = new TohDohFuKen();
-                tohDohFuKen.switchTest(column_id);
+                //arrayListにフラグ１の県をいれる（SecondActivityのshowBoundaryメソッドで呼び出す）
+                boundaryArray.add(column_id);
+                Log.d(TAG, "flg_state2: " + boundaryArray);
 
                 //クローズ処理
 
