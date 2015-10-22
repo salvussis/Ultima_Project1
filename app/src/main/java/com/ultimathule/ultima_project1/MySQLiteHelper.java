@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Created by nobuyukiizumi on 15/10/19.
@@ -26,11 +27,10 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     private static final String STATE = "state";
     private static final String COMPLETE_FLG = "complete_flg";
 
-//    private static final String[] COLUMNS = {ID,STATE,COMPLETE_FLG};
-
     //初期データ登録用のArrayList
-    ArrayList<Integer> number = new ArrayList<>();
-    ArrayList<String> kenmei = new ArrayList<>();
+    ArrayList<Integer> number;
+    ArrayList<String> kenmei;
+    InitialData initialData;
 
     //フラグ１の県を抜き出すメソッド用
     static ArrayList<String> boundaryArray = new ArrayList<>();
@@ -52,20 +52,17 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
                 + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + STATE + " TEXT, "
                 + COMPLETE_FLG + " INTEGER)";
-
         // create books table
         db.execSQL(CREATE_BOOK_TABLE);
 
         Log.d(TAG, "make table: " + CREATE_BOOK_TABLE.toString());
 
         //①初期データ登録用　
-        number.add(1);
-        number.add(2);
-        number.add(3);
-
-        kenmei.add("Tokyo");
-        kenmei.add("Saitama Prefecture");
-        kenmei.add("Miyagi Prefecture");
+        initialData = new InitialData();
+        number = new ArrayList<>(Arrays.asList(initialData.initialDataIds));
+        kenmei = new ArrayList<>(Arrays.asList(initialData.initialDataStates));
+        Log.d(TAG, "number: " + number);
+        Log.d(TAG, "kenmei: " + kenmei.toString());
 
         for(int i = 0; i < number.size(); i++) {
 
