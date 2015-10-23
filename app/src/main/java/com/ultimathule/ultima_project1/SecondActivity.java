@@ -86,9 +86,9 @@ public class SecondActivity extends FragmentActivity implements OnMapReadyCallba
                case 8:  break;
                case 9:  break;
                case 10:  break;
-               case 11: Log.d(TAG, "method_test:埼玉"); break;
+               case 11: Log.d(TAG, "method_test:埼玉"); miyagiBoundary(); break;
                case 12:  break;
-               case 13: Log.d(TAG, "method_test:東京"); tokyoBoundary(); break;
+               case 13: Log.d(TAG, "method_test:東京"); hokkaidoBoundary(); break;
                case 14:  break;
                case 15:  break;
                case 16:  break;
@@ -128,7 +128,7 @@ public class SecondActivity extends FragmentActivity implements OnMapReadyCallba
        }
     }
 
-    public void tokyoBoundary() {
+    public void hokkaidoBoundary() {
 
         //ポリゴン
         PolygonOptions rectOptions = new PolygonOptions()
@@ -987,7 +987,7 @@ public class SecondActivity extends FragmentActivity implements OnMapReadyCallba
 
     }
 
-        public void miyagiBoundary() {
+    public void miyagiBoundary() {
 
         //ポリゴンを描画(練習　宮城県①）if文で呼び出す？
         PolygonOptions rectOptions = new PolygonOptions()
