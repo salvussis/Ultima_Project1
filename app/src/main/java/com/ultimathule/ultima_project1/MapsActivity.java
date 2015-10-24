@@ -209,34 +209,249 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
      部分一致検索プログラミング（都道府県を選別する）
      */
     public void bubunIchi(String ken) {
-        final String TOKYO = "Tokyo";
-        final String SAITAMA = "Saitama Prefecture";
+        //final String TOKYO = "Tokyo";
+        final String HOKKAIDO = "Hokkaido Prefecture";
+        final String AOMORI = "Aomori Prefecture";
+        final String IWATE = "Iwate Prefecture";
         final String MIYAGI = "Miyagi Prefecture";
+        final String AKITA = "Akita Prefecture";
+        final String YAMAGATA = "Yamagata Prefecture";
+        final String FUKUSHIMA = "Fukushima Prefecture";
+        final String IBARAKI = "Ibaraki Prefecture";
+        final String TOCHIGI = "Tochigi Prefecture";
+        final String GUNMA = "Gunma Prefecture";
+        final String SAITAMA = "Saitama Prefecture";
+        final String CHIBA = "Chiba Prefecture";
+        final String TOKYO = "Tokyo";
+        final String KANAGAWA = "Kanagawa Prefecture";
+        final String YAMANASHI = "Yamanashi Prefecture";
+        final String NIIGATA = "Niigata Prefecture";
+        final String TOYAMA = "Toyama Prefecture";
+        final String ISHIKAWA = "Ishikawa Prefecture";
+        final String FUKUI = "Fukui Prefecture";
+        final String NAGANO = "Nagano Prefecture";
+        final String GIFU = "Gifu Prefecture";
+        final String SHIZUOKA = "Shizuoka Prefecture";
+        final String AICHI = "Aichi Prefecture";
+        final String MIE = "Mie Prefecture";
+        final String SHIGA = "Shiga Prefecture";
+        final String KYOTO = "Kyoto Prefecture";
+        final String OSAKA = "Osaka Prefecture";
+        final String HYOGO = "Hyogo Prefecture";
+        final String NARA = "Nara Prefecture";
+        final String WAKAYAMA = "Wakayama Prefecture";
+        final String TOTTORI = "Tottori Prefecture";
+        final String SHIMANE = "Shimane Prefecture";
+        final String OKAYAMA = "Okayama Prefecture";
+        final String HIROSHIMA = "Hiroshima Prefecture";
+        final String YAMAGUCHI = "Yamaguchi Prefecture";
+        final String TOKUSHIMA = "Tokushima Prefecture";
+        final String KAGAWA = "Kagawa Prefecture";
+        final String EHIME = "Ehime Prefecture";
+        final String KOCHI = "Kochi Prefecture";
+        final String FUKUOKA = "Fukuoka Prefecture";
+        final String SAGA = "Saga Prefecture";
+        final String NAGASAKI = "Nagasaki Prefecture";
+        final String KUMAMOTO = "Kumamoto Prefecture";
+        final String OITA = "Oita Prefecture";
+        final String MIYAZAKI = "Miyazaki Prefecture";
+        final String KAGOSHIMA = "Kagoshima Prefecture";
+        final String OKINAWA = "Okinawa Prefecture";
 
         Log.d(TAG, "ken(bubunIchi): " + ken);
         String state;
 
         //1.containsメソッドで部分一致検索
-        if(ken.contains(TOKYO)){
+        if(ken.contains(HOKKAIDO)){
+            state = HOKKAIDO;
+            mySQLiteHelper.updateFlg(state);
+
+        }else if(ken.contains(AOMORI)){
+            state = AOMORI;
+            mySQLiteHelper.updateFlg(state);
+
+        }else if(ken.contains(IWATE)){
+            state = IWATE;
+            mySQLiteHelper.updateFlg(state);
+
+        }else if(ken.contains(MIYAGI)){
+            state = MIYAGI;
+            mySQLiteHelper.updateFlg(state);
+
+        }else if(ken.contains(AKITA)){
+            state = AKITA;
+            mySQLiteHelper.updateFlg(state);
+
+        }else if(ken.contains(YAMAGATA)){
+            state = YAMAGATA;
+            mySQLiteHelper.updateFlg(state);
+
+        }else if(ken.contains(FUKUSHIMA)){
+            state = FUKUSHIMA;
+            mySQLiteHelper.updateFlg(state);
+
+        }else if(ken.contains(IBARAKI)){
+            state = IBARAKI;
+            mySQLiteHelper.updateFlg(state);
+
+        }else if(ken.contains(TOCHIGI)){
+            state = TOCHIGI;
+            mySQLiteHelper.updateFlg(state);
+
+        }else if(ken.contains(GUNMA)){
+            state = GUNMA;
+            mySQLiteHelper.updateFlg(state);
+
+        }else if(ken.contains(SAITAMA)){
+            state = SAITAMA;
+            mySQLiteHelper.updateFlg(state);
+
+        }else if(ken.contains(CHIBA)){
+            state = CHIBA;
+            mySQLiteHelper.updateFlg(state);
+
+        }else if(ken.contains(TOKYO)){
             //2.一致したら、Tokyoを引数にしてupdateFlgメソッドを呼ぶ
-            state = TOKYO;//選別用の変数
+            state = TOKYO;
             mySQLiteHelper.updateFlg(state);
             Log.d(TAG, "選別用(東京)：　" + state.toString());
             Log.d(TAG, "選別用(東京)" + ken);
 
-        } else if(ken.contains(SAITAMA)){
-
-            state = SAITAMA;
+        }else if(ken.contains(KANAGAWA)){
+            state = KANAGAWA;
             mySQLiteHelper.updateFlg(state);
-            Log.d(TAG, "選別用(埼玉)：　" + state.toString());
-            Log.d(TAG, "選別用(埼玉)" + ken);
 
-        } else if(ken.contains(MIYAGI)){
-
-            state = MIYAGI;
+        }else if(ken.contains(YAMANASHI)){
+            state = YAMANASHI;
             mySQLiteHelper.updateFlg(state);
-            Log.d(TAG, "選別用(宮城)：　" + state.toString());
-            Log.d(TAG, "選別用(宮城)" + ken);
+
+        }else if(ken.contains(NIIGATA)){
+            state = NIIGATA;
+            mySQLiteHelper.updateFlg(state);
+
+        }else if(ken.contains(TOYAMA)){
+            state = TOYAMA;
+            mySQLiteHelper.updateFlg(state);
+
+        }else if(ken.contains(ISHIKAWA)){
+            state = ISHIKAWA;
+            mySQLiteHelper.updateFlg(state);
+
+        }else if(ken.contains(FUKUI)){
+            state = FUKUI;
+            mySQLiteHelper.updateFlg(state);
+
+        }else if(ken.contains(NAGANO)){
+            state = NAGANO;
+            mySQLiteHelper.updateFlg(state);
+
+        }else if(ken.contains(GIFU)){
+            state = GIFU;
+            mySQLiteHelper.updateFlg(state);
+
+        }else if(ken.contains(SHIZUOKA)){
+            state = SHIZUOKA;
+            mySQLiteHelper.updateFlg(state);
+
+        }else if(ken.contains(AICHI)){
+            state = AICHI;
+            mySQLiteHelper.updateFlg(state);
+
+        }else if(ken.contains(MIE)){
+            state = MIE;
+            mySQLiteHelper.updateFlg(state);
+
+        }else if(ken.contains(SHIGA)){
+            state = SHIGA;
+            mySQLiteHelper.updateFlg(state);
+
+        }else if(ken.contains(KYOTO)){
+            state = KYOTO;
+            mySQLiteHelper.updateFlg(state);
+
+        }else if(ken.contains(OSAKA)){
+            state = OSAKA;
+            mySQLiteHelper.updateFlg(state);
+
+        }else if(ken.contains(HYOGO)){
+            state = HYOGO;
+            mySQLiteHelper.updateFlg(state);
+
+        }else if(ken.contains(NARA)){
+            state = NARA;
+            mySQLiteHelper.updateFlg(state);
+
+        }else if(ken.contains(WAKAYAMA)){
+            state = WAKAYAMA;
+            mySQLiteHelper.updateFlg(state);
+
+        }else if(ken.contains(TOTTORI)){
+            state = TOTTORI;
+            mySQLiteHelper.updateFlg(state);
+
+        }else if(ken.contains(SHIMANE)){
+            state = SHIMANE;
+            mySQLiteHelper.updateFlg(state);
+
+        }else if(ken.contains(OKAYAMA)){
+            state = OKAYAMA;
+            mySQLiteHelper.updateFlg(state);
+
+        }else if(ken.contains(HIROSHIMA)){
+            state = HIROSHIMA;
+            mySQLiteHelper.updateFlg(state);
+
+        }else if(ken.contains(YAMAGUCHI)){
+            state = YAMAGUCHI;
+            mySQLiteHelper.updateFlg(state);
+
+        }else if(ken.contains(TOKUSHIMA)){
+            state = TOKUSHIMA;
+            mySQLiteHelper.updateFlg(state);
+
+        }else if(ken.contains(KAGAWA)){
+            state = KAGAWA;
+            mySQLiteHelper.updateFlg(state);
+
+        }else if(ken.contains(EHIME)){
+            state = EHIME;
+            mySQLiteHelper.updateFlg(state);
+
+        }else if(ken.contains(KOCHI)){
+            state = KOCHI;
+            mySQLiteHelper.updateFlg(state);
+
+        }else if(ken.contains(FUKUOKA)){
+            state = FUKUOKA;
+            mySQLiteHelper.updateFlg(state);
+
+        }else if(ken.contains(SAGA)){
+            state = SAGA;
+            mySQLiteHelper.updateFlg(state);
+
+        }else if(ken.contains(NAGASAKI)){
+            state = NAGASAKI;
+            mySQLiteHelper.updateFlg(state);
+
+        }else if(ken.contains(KUMAMOTO)){
+            state = KUMAMOTO;
+            mySQLiteHelper.updateFlg(state);
+
+        }else if(ken.contains(OITA)){
+            state = OITA;
+            mySQLiteHelper.updateFlg(state);
+
+        }else if(ken.contains(MIYAZAKI)){
+            state = MIYAZAKI;
+            mySQLiteHelper.updateFlg(state);
+
+        }else if(ken.contains(KAGOSHIMA)){
+            state = KAGOSHIMA;
+            mySQLiteHelper.updateFlg(state);
+
+        }else if(ken.contains(OKINAWA)){
+            state = OKINAWA;
+            mySQLiteHelper.updateFlg(state);
 
         }
 
