@@ -199,7 +199,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         }
 
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(TOKYO, 10));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(TOKYO, 5));
         Log.d(TAG, "7") ;
 
     }
